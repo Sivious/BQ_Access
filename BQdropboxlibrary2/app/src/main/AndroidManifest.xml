@@ -32,7 +32,16 @@
             </intent-filter>
         </activity>
 
-    </application>
+        <activity
+            android:name=".ui.librarylist.LibraryListActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"/>
 
+        <activity
+            android:name=".ui.librarygrid.LibraryGridActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"/>
+
+    </application>
 
 </manifest>

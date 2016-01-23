@@ -3,4 +3,19 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="white">#FFFFFF</color>
+
+    <color name="dropboxBlue">#007EE5</color>
+    <color name="dropboxLightGrey">#7B8994</color>
+    <color name="dropboxGrey">#47525D</color>
+    <color name="dropboxDarkGrey">#3D464D</color>
+
+    <color name="dropboxBQPurple">#702077</color>
+    <color name="dropboxBQMagenta">#B00062</color>
+    <color name="dropboxBQPink">#D90156</color>
+    <color name="dropboxBQRed">#EC0925</color>
+    <color name="dropboxBQOrange">#FC4F00</color>
+    <color name="dropboxBQGrey">#57565C</color>
+
 </resources>
