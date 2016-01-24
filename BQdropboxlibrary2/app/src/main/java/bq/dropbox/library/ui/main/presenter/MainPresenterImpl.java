@@ -1,4 +1,4 @@
-package bq.dropbox.library.ui.librarylist.presenter;
+package bq.dropbox.library.ui.main.presenter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -14,14 +14,14 @@ import bq.dropbox.library.common.Constants;
 import bq.dropbox.library.logic.GetDropboxFiles;
 import bq.dropbox.library.logic.GetDropboxFilesImpl;
 import bq.dropbox.library.model.LibraryItem;
-import bq.dropbox.library.ui.librarylist.LibraryListActivity;
+import bq.dropbox.library.ui.main.MainActivity;
 
 /**
  * Created by Javier on 23/01/2016.
  */
-public class LibraryListPresenterImpl implements LibraryListPresenter {
+public class MainPresenterImpl implements MainPresenter {
     private final Context context;
-    private final LibraryListActivity view;
+    private final MainActivity view;
     private DropboxAPI dropboxApi;
     private GetDropboxFiles getDropboxFiles;
 
@@ -29,17 +29,16 @@ public class LibraryListPresenterImpl implements LibraryListPresenter {
     private static final String ACCESS_SECRET = Constants.DROPBOX_APP_SECRET;
     private static final String DROPBOX_NAME = Constants.ACCOUNT_PREFS_NAME;
 
-
-    public LibraryListPresenterImpl(Context context, LibraryListActivity view) {
+    public MainPresenterImpl(Context context, MainActivity view) {
         this.context = context;
         this.view = view;
 
         AndroidAuthSession session = getDropboxSession();
 
         dropboxApi = new DropboxAPI(session);
-
         getDropboxFiles = new GetDropboxFilesImpl(dropboxApi, Constants.ROOT_PATH);
     }
+
 
     private AndroidAuthSession getDropboxSession() {
         AppKeyPair appKeyPair = new AppKeyPair(Constants.DROPBOX_APP_KEY, Constants.DROPBOX_APP_SECRET);
@@ -71,20 +70,19 @@ public class LibraryListPresenterImpl implements LibraryListPresenter {
     public void getFiles() {
         getDropboxFiles.execute(new GetDropboxFiles.Callback() {
             @Override
-            public void OnSuccess(ArrayList<com.dropbox.client2.DropboxAPI.Entry> files) {
+            public void OnSuccess(ArrayList<DropboxAPI.Entry> files) {
                 view.setFileList(covertToLibraryData(files));
             }
 
             @Override
             public void OnFailure(String error) {
-
             }
         });
     }
 
-    private ArrayList<LibraryItem> covertToLibraryData(ArrayList<com.dropbox.client2.DropboxAPI.Entry> files) {
+    private ArrayList<LibraryItem> covertToLibraryData(ArrayList<DropboxAPI.Entry> files) {
         ArrayList<LibraryItem> items = new ArrayList<LibraryItem>();
-        for (com.dropbox.client2.DropboxAPI.Entry file : files) {
+        for (DropboxAPI.Entry file : files) {
             String name = file.fileName();
             String dateModified = file.clientMtime;
             LibraryItem item = new LibraryItem(name, dateModified);

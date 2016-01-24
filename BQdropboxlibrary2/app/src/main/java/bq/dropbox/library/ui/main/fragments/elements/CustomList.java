@@ -1,6 +1,7 @@
-package bq.dropbox.library.ui.librarylist.elements;
+package bq.dropbox.library.ui.main.fragments.elements;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +17,12 @@ import bq.dropbox.library.R;
  * Created by Javier on 23/01/2016.
  */
 public class CustomList extends ArrayAdapter<String> {
-    private final Activity context;
+    private final Context context;
     private final ArrayList<String> names;
     private final ArrayList<String> dates;
     private final ArrayList<Integer> images;
 
-    public CustomList(Activity context, ArrayList<String> names, ArrayList<String> dates, ArrayList<Integer> images) {
+    public CustomList(Context context, ArrayList<String> names, ArrayList<String> dates, ArrayList<Integer> images) {
         super(context, R.layout.library_list, names);
         this.context = context;
         this.names = names;
@@ -31,7 +32,8 @@ public class CustomList extends ArrayAdapter<String> {
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        LayoutInflater inflater = context.getLayoutInflater();
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
         View rowView = inflater.inflate(R.layout.library_list, null, true);
         TextView txtTitle = (TextView) rowView.findViewById(R.id.firstLine);
         TextView txtSubTitle = (TextView) rowView.findViewById(R.id.secondLine);

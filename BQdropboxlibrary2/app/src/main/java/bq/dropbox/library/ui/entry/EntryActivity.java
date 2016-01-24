@@ -100,7 +100,7 @@ public class EntryActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
 
-            navigator.openLibraryGrid();
+            navigator.openMain();
         }
     }
 

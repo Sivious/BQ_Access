@@ -3,8 +3,7 @@ package bq.dropbox.library.ui.navigator;
 import android.app.Activity;
 import android.content.Intent;
 
-import bq.dropbox.library.ui.librarygrid.LibraryGridActivity;
-import bq.dropbox.library.ui.librarylist.LibraryListActivity;
+import bq.dropbox.library.ui.main.MainActivity;
 
 /**
  * Created by Javier on 23/01/2016.
@@ -20,18 +19,8 @@ public class Navigator {
         context.startActivity(intent);
     }
 
-    public void openLibraryList(){
-        Intent intent = new Intent(context, LibraryListActivity.class);
+    public void openMain(){
+        Intent intent = new Intent(context, MainActivity.class);
         startActivity(intent);
     }
-
-    public void openLibraryGrid(){
-        Intent intent = new Intent(context, LibraryGridActivity.class);
-        startActivity(intent);
-    }
-
-    /*public void openTermsAndConditionsWeb() {
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.TERMS_CONDITIONS_URL));
-        startActivity(browserIntent);
-    }*/
 }

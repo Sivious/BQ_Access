@@ -1,6 +1,5 @@
-package bq.dropbox.library.ui.librarygrid.elements;
+package bq.dropbox.library.ui.main.fragments.elements;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,12 +16,12 @@ import bq.dropbox.library.R;
  * Created by Javier on 23/01/2016.
  */
 public class CustomGrid extends BaseAdapter {
-    private final Activity context;
+    private final Context context;
     private final ArrayList<String> names;
     private final ArrayList<String> dates;
     private final ArrayList<Integer> images;
 
-    public CustomGrid(Activity context, ArrayList<String> names, ArrayList<String> dates, ArrayList<Integer> images) {
+    public CustomGrid(Context context, ArrayList<String> names, ArrayList<String> dates, ArrayList<Integer> images) {
         this.context = context;
         this.names = names;
         this.dates = dates;
