@@ -5,4 +5,5 @@
     <string name="entry_activity_auth">Log in</string>
 
     <string name="default_string">Default</string>
+    <string name="loading_string">Loading…</string>
 </resources>

@@ -3,7 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/activity_horizontal_margin">
+    android:background="@color/dropboxBQOrange"
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/epub_detail_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:src="@drawable/ic_close" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -25,22 +33,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:background="@color/white"
-                android:text="@string/default_string"
-                android:textAlignment="textEnd"
-                android:textColor="@color/dropboxBQGrey"
-                android:textSize="50sp"
+                android:background="@color/dropboxBQOrange"
+                android:text="@string/loading_string"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="25sp"
                 android:textStyle="bold" />
 
 
         </FrameLayout>
 
-        <ImageView
-            android:id="@+id/epub_detail_close"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:src="@drawable/ic_close" />
+
 
     </RelativeLayout>
 

@@ -50,8 +50,6 @@ public class LibraryGridFragmentImpl extends Fragment implements LibraryGridFrag
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Toast.makeText(getContext(), "You Clicked at " + names.get(+position), Toast.LENGTH_SHORT).show();
-
                 ((MainActivity) getActivity()).showEpubInfo(items.get(position));
             }
         });

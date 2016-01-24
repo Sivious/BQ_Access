@@ -28,4 +28,5 @@ dependencies {
     compile 'com.android.support:design:23.1.1'
     compile files('src/main/java/lib/slf4j-android-1.6.1-RC1.jar')
     compile files('src/main/java/lib/epublib-core-latest.jar')
+    compile 'com.github.rahatarmanahmed:circularprogressview:2.4.0'
 }

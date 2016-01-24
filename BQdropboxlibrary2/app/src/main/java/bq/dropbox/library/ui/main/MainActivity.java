@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.github.rahatarmanahmed.cpv.CircularProgressView;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -29,6 +31,7 @@ public class MainActivity extends FragmentActivity implements MainView {
     private FrameLayout gridLayout;
     private FrameLayout listLayout;
     private FrameLayout infoDetailLayout;
+    private CircularProgressView progressView;
 
 
     @Override
@@ -36,6 +39,7 @@ public class MainActivity extends FragmentActivity implements MainView {
         Collections.sort(items);
         this.items = items;
 
+        hideProgress();
         libraryView.setClickable(true);
         showGridFragment();
     }
@@ -46,6 +50,7 @@ public class MainActivity extends FragmentActivity implements MainView {
         fragment.setPath(item.getPath());
 
         FragmentTransaction infoFragmentTransaction = getSupportFragmentManager().beginTransaction();
+        infoFragmentTransaction.setCustomAnimations(R.anim.fade_in, 0);
 
         infoDetailLayout.setVisibility(View.VISIBLE);
 
@@ -85,6 +90,9 @@ public class MainActivity extends FragmentActivity implements MainView {
         listLayout = (FrameLayout) findViewById(R.id.main_list);
         libraryView = (FloatingActionButton) findViewById(R.id.main_fab);
         infoDetailLayout = (FrameLayout) findViewById(R.id.main_epub_detail);
+        progressView = (CircularProgressView) findViewById(R.id.main_progress);
+
+        showProgress();
 
         libraryView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,5 +162,23 @@ public class MainActivity extends FragmentActivity implements MainView {
         if (gridLayout != null) {
             gridLayout.setVisibility(View.GONE);
         }
+    }
+
+    private void showProgress(){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                progressView.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+    private void hideProgress(){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                progressView.setVisibility(View.GONE);
+            }
+        });
     }
 }

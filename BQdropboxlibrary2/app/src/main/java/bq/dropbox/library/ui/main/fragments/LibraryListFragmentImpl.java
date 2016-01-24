@@ -8,12 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import bq.dropbox.library.R;
 import bq.dropbox.library.model.LibraryItem;
+import bq.dropbox.library.ui.main.MainActivity;
 import bq.dropbox.library.ui.main.fragments.elements.CustomList;
 
 /**
@@ -59,8 +59,7 @@ public class LibraryListFragmentImpl extends Fragment implements LibraryListFrag
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Toast.makeText(getContext(), "You Clicked at " + names.get(+position), Toast.LENGTH_SHORT).show();
-
+                ((MainActivity) getActivity()).showEpubInfo(items.get(position));
             }
         });
     }
