@@ -18,4 +18,6 @@
     <color name="dropboxBQOrange">#FC4F00</color>
     <color name="dropboxBQGrey">#57565C</color>
 
+    <color name="dropboxBQOrange_alpha">#66FC4F00</color>
+
 </resources>
