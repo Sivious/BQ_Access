@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by Javier on 23/01/2016.
  */
-public interface GetDropboxFiles {
+public interface GetDropboxFilesInteractor {
     void execute(Callback callback);
     void returnList(ArrayList<com.dropbox.client2.DropboxAPI.Entry> files);
 

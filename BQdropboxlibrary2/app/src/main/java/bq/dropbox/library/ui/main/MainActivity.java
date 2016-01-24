@@ -9,9 +9,11 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import bq.dropbox.library.R;
 import bq.dropbox.library.model.LibraryItem;
+import bq.dropbox.library.ui.main.fragments.EpubInfoFragmentImpl;
 import bq.dropbox.library.ui.main.fragments.LibraryGridFragmentImpl;
 import bq.dropbox.library.ui.main.fragments.LibraryListFragmentImpl;
 import bq.dropbox.library.ui.main.presenter.MainPresenterImpl;
@@ -26,12 +28,42 @@ public class MainActivity extends FragmentActivity implements MainView {
     private MainPresenterImpl presenter;
     private FrameLayout gridLayout;
     private FrameLayout listLayout;
+    private FrameLayout infoDetailLayout;
 
 
     @Override
     public void setFileList(ArrayList<LibraryItem> items) {
+        Collections.sort(items);
         this.items = items;
+
         libraryView.setClickable(true);
+        showGridFragment();
+    }
+
+    @Override
+    public void showEpubInfo(LibraryItem item) {
+        EpubInfoFragmentImpl fragment = new EpubInfoFragmentImpl();
+        fragment.setPath(item.getPath());
+
+        FragmentTransaction infoFragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+        infoDetailLayout.setVisibility(View.VISIBLE);
+
+        if (infoFragmentTransaction == null) {
+            infoFragmentTransaction.add(R.id.main_epub_detail, fragment);
+        } else {
+            infoFragmentTransaction.replace(R.id.main_epub_detail, fragment);
+        }
+
+        infoFragmentTransaction.commitAllowingStateLoss();
+
+    }
+
+    @Override
+    public void hideEpubInfo() {
+        if (infoDetailLayout != null) {
+            infoDetailLayout.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -52,6 +84,7 @@ public class MainActivity extends FragmentActivity implements MainView {
         gridLayout = (FrameLayout) findViewById(R.id.main_grid);
         listLayout = (FrameLayout) findViewById(R.id.main_list);
         libraryView = (FloatingActionButton) findViewById(R.id.main_fab);
+        infoDetailLayout = (FrameLayout) findViewById(R.id.main_epub_detail);
 
         libraryView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +127,7 @@ public class MainActivity extends FragmentActivity implements MainView {
         listFragmentTransaction.commitAllowingStateLoss();
     }
 
-    private void hideListFragment(){
+    private void hideListFragment() {
         if (listLayout != null) {
             listLayout.setVisibility(View.GONE);
         }
@@ -117,7 +150,7 @@ public class MainActivity extends FragmentActivity implements MainView {
         gridFragmentTransaction.commitAllowingStateLoss();
     }
 
-    private void hideGridFragment(){
+    private void hideGridFragment() {
         if (gridLayout != null) {
             gridLayout.setVisibility(View.GONE);
         }

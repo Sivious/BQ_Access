@@ -7,13 +7,13 @@ import bq.dropbox.library.framework.dropbox.DropboxEpubListFiles;
 /**
  * Created by Javier on 23/01/2016.
  */
-public class GetDropboxFilesImpl implements GetDropboxFiles {
+public class GetDropboxFilesInteractorImpl implements GetDropboxFilesInteractor {
     private DropboxAPI dropboxAPI;
     private String path;
     private DropboxEpubListFiles dropboxEpubListFiles;
     private Callback callback;
 
-    public GetDropboxFilesImpl(DropboxAPI dropboxAPI, String path) {
+    public GetDropboxFilesInteractorImpl(DropboxAPI dropboxAPI, String path) {
         this.dropboxAPI = dropboxAPI;
         this.path = path;
     }

@@ -18,16 +18,23 @@
         <FrameLayout
             android:id="@+id/main_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <FrameLayout
+            android:id="@+id/main_epub_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/main_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
-            android:paddingBottom="16dp"
+            android:layout_centerHorizontal="true"
+            android:clickable="true"
+            android:src="@drawable/ic_grid"
             app:backgroundTint="@color/dropboxBQMagenta" />
 
     </RelativeLayout>

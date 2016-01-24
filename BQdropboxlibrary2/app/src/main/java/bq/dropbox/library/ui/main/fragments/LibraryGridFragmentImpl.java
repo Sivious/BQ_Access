@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import bq.dropbox.library.R;
 import bq.dropbox.library.model.LibraryItem;
+import bq.dropbox.library.ui.main.MainActivity;
 import bq.dropbox.library.ui.main.fragments.elements.CustomGrid;
 
 /**
@@ -51,6 +52,7 @@ public class LibraryGridFragmentImpl extends Fragment implements LibraryGridFrag
                                     int position, long id) {
                 Toast.makeText(getContext(), "You Clicked at " + names.get(+position), Toast.LENGTH_SHORT).show();
 
+                ((MainActivity) getActivity()).showEpubInfo(items.get(position));
             }
         });
     }

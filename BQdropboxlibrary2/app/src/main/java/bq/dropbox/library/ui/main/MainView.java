@@ -9,4 +9,6 @@ import bq.dropbox.library.model.LibraryItem;
  */
 public interface MainView {
     void setFileList(ArrayList<LibraryItem> items);
+    void showEpubInfo(LibraryItem item);
+    void hideEpubInfo();
 }

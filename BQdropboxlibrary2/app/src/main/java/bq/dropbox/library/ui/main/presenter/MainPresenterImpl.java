@@ -11,8 +11,8 @@ import com.dropbox.client2.session.AppKeyPair;
 import java.util.ArrayList;
 
 import bq.dropbox.library.common.Constants;
-import bq.dropbox.library.logic.GetDropboxFiles;
-import bq.dropbox.library.logic.GetDropboxFilesImpl;
+import bq.dropbox.library.logic.GetDropboxFilesInteractor;
+import bq.dropbox.library.logic.GetDropboxFilesInteractorImpl;
 import bq.dropbox.library.model.LibraryItem;
 import bq.dropbox.library.ui.main.MainActivity;
 
@@ -23,7 +23,7 @@ public class MainPresenterImpl implements MainPresenter {
     private final Context context;
     private final MainActivity view;
     private DropboxAPI dropboxApi;
-    private GetDropboxFiles getDropboxFiles;
+    private GetDropboxFilesInteractor getDropboxFilesInteractor;
 
     private static final String ACCESS_KEY = Constants.DROPBOX_APP_KEY;
     private static final String ACCESS_SECRET = Constants.DROPBOX_APP_SECRET;
@@ -36,7 +36,7 @@ public class MainPresenterImpl implements MainPresenter {
         AndroidAuthSession session = getDropboxSession();
 
         dropboxApi = new DropboxAPI(session);
-        getDropboxFiles = new GetDropboxFilesImpl(dropboxApi, Constants.ROOT_PATH);
+        getDropboxFilesInteractor = new GetDropboxFilesInteractorImpl(dropboxApi, Constants.ROOT_PATH);
     }
 
 
@@ -68,7 +68,7 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void getFiles() {
-        getDropboxFiles.execute(new GetDropboxFiles.Callback() {
+        getDropboxFilesInteractor.execute(new GetDropboxFilesInteractor.Callback() {
             @Override
             public void OnSuccess(ArrayList<DropboxAPI.Entry> files) {
                 view.setFileList(covertToLibraryData(files));
@@ -81,11 +81,12 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     private ArrayList<LibraryItem> covertToLibraryData(ArrayList<DropboxAPI.Entry> files) {
-        ArrayList<LibraryItem> items = new ArrayList<LibraryItem>();
+        ArrayList<LibraryItem> items = new ArrayList<>();
         for (DropboxAPI.Entry file : files) {
             String name = file.fileName();
             String dateModified = file.clientMtime;
-            LibraryItem item = new LibraryItem(name, dateModified);
+            String path = file.path;
+            LibraryItem item = new LibraryItem(name, dateModified, path);
             items.add(item);
         }
 

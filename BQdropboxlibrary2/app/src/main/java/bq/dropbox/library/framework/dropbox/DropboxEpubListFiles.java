@@ -8,19 +8,19 @@ import com.dropbox.client2.exception.DropboxException;
 
 import java.util.ArrayList;
 
-import bq.dropbox.library.logic.GetDropboxFilesImpl;
+import bq.dropbox.library.logic.GetDropboxFilesInteractorImpl;
 
 /**
  * Created by Javier on 23/01/2016.
  */
 public class DropboxEpubListFiles extends AsyncTask<Void, Void, Void> {
-    private final GetDropboxFilesImpl getDropboxFiles;
+    private final GetDropboxFilesInteractorImpl getDropboxFiles;
     private DropboxAPI dropboxApi;
     private String path;
     private ArrayList<com.dropbox.client2.DropboxAPI.Entry> files;
     private final String fileExtension = "EPUB";
 
-    public DropboxEpubListFiles(DropboxAPI dropboxApi, String path, GetDropboxFilesImpl getDropboxFiles) {
+    public DropboxEpubListFiles(DropboxAPI dropboxApi, String path, GetDropboxFilesInteractorImpl getDropboxFiles) {
         this.dropboxApi = dropboxApi;
         this.path = path;
         this.getDropboxFiles = getDropboxFiles;
