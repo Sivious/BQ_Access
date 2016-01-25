@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.rahatarmanahmed.cpv.CircularProgressView;
+
 import bq.dropbox.library.R;
 import bq.dropbox.library.model.EpubDetailedInfoItem;
 import bq.dropbox.library.ui.main.MainActivity;
@@ -26,6 +28,7 @@ public class EpubInfoFragmentImpl extends Fragment implements EpubInfoFragment {
     private EpubInfoPresenter presenter;
     private ImageView cover;
     private TextView title;
+    private CircularProgressView progressView;
 
     @Override
     public void setPath(String path) {
@@ -36,6 +39,8 @@ public class EpubInfoFragmentImpl extends Fragment implements EpubInfoFragment {
     public void setContent(EpubDetailedInfoItem item) {
         cover.setImageBitmap(item.getCoverImage());
         title.setText(item.getTitle());
+
+        hideProgress();
     }
 
     @Override
@@ -59,6 +64,9 @@ public class EpubInfoFragmentImpl extends Fragment implements EpubInfoFragment {
         close = (ImageView) view.findViewById(R.id.epub_detail_close);
         cover = (ImageView) view.findViewById(R.id.epub_detail_cover);
         title = (TextView) view.findViewById(R.id.epub_detail_title);
+        progressView = (CircularProgressView) view.findViewById(R.id.epub_detail_progress);
+
+        showProgress();
 
         close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,5 +76,12 @@ public class EpubInfoFragmentImpl extends Fragment implements EpubInfoFragment {
         });
     }
 
+    private void showProgress() {
+        progressView.setVisibility(View.VISIBLE);
+    }
+
+    private void hideProgress() {
+        progressView.setVisibility(View.GONE);
+    }
 
 }

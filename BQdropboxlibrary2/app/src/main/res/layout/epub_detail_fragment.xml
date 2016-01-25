@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/dropboxBQOrange_alpha">
+    android:background="@color/dropboxBQOrange_alpha"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/epub_detail_close"
@@ -21,7 +22,7 @@
             android:id="@+id/epub_detail_cover"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/dropboxBQOrange_alpha"/>
+            android:background="@color/dropboxBQOrange_alpha" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -33,7 +34,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:background="@color/dropboxBQOrange_alpha"
-                android:text="@string/loading_string"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="25sp"
@@ -42,7 +42,15 @@
 
         </FrameLayout>
 
-
+        <com.github.rahatarmanahmed.cpv.CircularProgressView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/epub_detail_progress"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            app:cpv_animAutostart="true"
+            app:cpv_color="@color/dropboxBQMagenta"
+            app:cpv_indeterminate="true" />
 
     </RelativeLayout>
 
